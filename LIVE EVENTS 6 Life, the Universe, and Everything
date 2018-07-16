@@ -1,0 +1,15 @@
+#include<iostream>
+using namespace std;
+int main(){
+    int i,n;
+    while(cin>>n){
+        if(n==42){
+        break;
+        }
+        else{
+            cout<<n<<endl;
+        }
+    }
+  
+}
+Language: C++14
