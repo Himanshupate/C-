@@ -1,0 +1,16 @@
+#include<iostream>
+using namespace std;
+int main(){
+    int i,F,n=1;
+    cin>>F;
+    if(F>=1 && F<=10 ){
+        for(i=1;i<=F;i++){
+            n = n*i;
+        }
+    cout<<n;
+        
+    }
+    
+    return 0;
+}
+Language: C++14
