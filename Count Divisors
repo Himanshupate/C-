@@ -1,0 +1,15 @@
+#include <iostream>
+ 
+using namespace std;
+ 
+int main() {
+	int l,r,k,i,count= 0;
+	cin>>l>>r>>k;
+	for(l;l<=r;l++){
+	    if(l%k == 0){
+	        count += 1;
+	    }
+	}
+	cout<<count;
+}
+Language: C++
