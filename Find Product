@@ -1,0 +1,20 @@
+#include <iostream>
+#include <math.h>
+ 
+using namespace std;
+ 
+int main() {
+	long num,sum=1,i,size;
+	cin >> size;
+	int arr[size];
+	for(i=0;i<size;i++){
+	    cin>>arr[i];
+	}
+	num = pow(10,9)+7;
+	for(i=0;i<size;i++){
+	    sum = (sum * arr[i]) % num;
+	}
+	cout<<sum;
+	 
+}
+Language: C++
