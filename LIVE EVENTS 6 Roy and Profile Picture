@@ -1,0 +1,19 @@
+#include<iostream>
+using namespace std;
+int main(){
+    int i,L,W,H,N;
+    cin>>L;
+    cin>>N;
+    for(i=0; i<N;i++){
+        cin>>W>>H;
+        if(W<L or H < L ){
+            cout<<"UPLOAD ANOTHER\n";
+        }
+        else if(W==H){
+                cout<<"ACCEPTED\n";
+            }
+            else 
+                cout<<"CROP IT\n";
+    }
+}
+Language: C++14
