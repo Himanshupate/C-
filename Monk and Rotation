@@ -1,0 +1,30 @@
+// Sample code to perform I/O:
+ 
+#include <iostream>
+ 
+using namespace std;
+ 
+int main() {
+    int t,n,k,i,l;
+      int arr[1000000];
+    cin>>t;
+    while(t--){
+        cin>>n>>k;
+        for(i=0;i<n;i++){
+            cin>>arr[i];
+            
+        }
+        if(k > n)
+            k = k%n;
+            
+            for(i=0;i<n;i++){
+                cout<<arr[(n-k+i)%n]<<" ";
+            }
+            cout<<"\n";
+        
+    
+    }
+ 
+    return 0;
+}
+Language: C++
