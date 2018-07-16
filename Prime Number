@@ -20,4 +20,3 @@ int checkprime(int n){
     }
     return 1;
 }
-Language: C++14
