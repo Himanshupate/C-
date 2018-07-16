@@ -1,0 +1,40 @@
+#include<iostream>
+using namespace std;
+int main(){
+    int i,n,K;
+    string a;
+    cin>>a;
+    char x[ a.length()];
+    cin>>K;
+    for(i=0;i<a.length();i++){
+        x[i] = a[i];
+    }
+    for(i=0;i<a.length();i++){
+        n = int(x[i]);
+        if(n >= 65 && n <=90){
+            n += K%26 ;
+            while(n>90){
+                n = (n%90)+64;
+            }
+        }
+        else if(n >= 48 && n <=57){
+                n += K%10;
+                while(n>57){
+                    n= (n%57)+47;
+                }
+            
+        }
+        else if(n >= 97 && n <=122){
+                n += K%26 ;
+                while(n>122){
+                    n= (n%122)+96;
+                }
+            
+        }
+    x[i] = char(n);    
+    cout<<x[i];
+        
+    }
+    return 0;
+}       
+Language: C++14
