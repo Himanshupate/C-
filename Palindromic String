@@ -1,0 +1,23 @@
+#include <iostream>
+ 
+using namespace std;
+ 
+int main() {
+	string str;
+	int i,n,flag=0;
+	cin>>str;
+	n= str.length();
+	// Reading input from STDIN
+	for(i=0;i<n;i++){
+	    if(str[i]!=str[n-i-1]){
+	        flag = 1;
+	        break;
+	    }
+	}
+	if(flag) 
+	cout<<"NO"; 
+	else
+	cout<<"YES";
+}
+ 
+Language: C++
