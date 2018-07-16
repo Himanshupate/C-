@@ -1,0 +1,25 @@
+#include <iostream>
+ 
+using namespace std;
+ 
+int main() {
+	int t,n,i,count;
+	int a[100000];
+	cin >> t;
+	while(t--){
+	    scanf("%d",&n);
+	    for(i=0;i<n;i++){
+	        scanf("%d",&a[i]);
+	    }
+	    count =1;
+	    for(i=1;i<n;i++){
+	        if(a[i-1]<a[i]){
+	            a[i]=a[i-1];
+	        }
+	        else{
+	            count++;
+	        }
+	    }
+	    cout<<count<<endl;
+	}
+}
