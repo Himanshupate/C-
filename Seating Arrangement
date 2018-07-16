@@ -1,0 +1,50 @@
+#include <iostream>
+ 
+using namespace std;
+ 
+int main() {
+	 int t,n,i,x;
+	 cin>>t;
+	 while(t--){
+	     cin>>n;
+	     x = n%12;
+	          if(x == 1){
+	              cout<<n + 11<<" WS"<<endl;
+	          }
+	           if(x == 0){
+	              cout<<n - 11 <<" WS"<<endl;
+	          }
+	           if(x == 6){
+	              cout<<n + 1<<" WS"<<endl;
+	          }
+	           if(x == 7){
+	              cout<<n - 1<<" WS"<<endl;
+	          }
+	               if(x == 2){
+	              cout<<n + 9 <<" MS"<<endl;
+	          }
+	           if(x == 11){
+	              cout<<n - 9<<" MS"<<endl;
+	          }
+	           if(x == 5){
+	              cout<<n + 3<<" MS"<<endl;
+	          }
+	           if(x == 8){
+	              cout<<n - 3<<" MS"<<endl;
+	          }     if(x == 3){
+	              cout<<n + 7<<" AS"<<endl;
+	          }
+	           if(x == 10){
+	              cout<<n - 7<<" AS"<<endl;
+	          }
+	           if(x == 4){
+	              cout<<n + 5<<" AS"<<endl;
+	          }
+	           if(x == 9){
+	              cout<<n - 5<<" AS"<<endl;
+	          }
+	     
+	 }
+}
+ 
+Language: C++
