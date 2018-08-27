@@ -4,15 +4,38 @@ struct  Node
 {
 	int info = 0;
 	struct Node * address = NULL;	
-}*start;
+}*start,*last;
 struct Node* create(){
 	struct Node* tt = new Node;
 	return tt;
 }
+void insertP(struct Node* temp, int pos, int ele){
+    struct Node * loc =start;
+    int i = 1;
+    while(loc != NULL){
+        i++;
+        if(i == pos ){
+            temp->info = ele;
+            temp->address = loc->address;
+            loc->address = temp;
+            break;
+        }
+        loc = loc->address;
+    }
+}
+void insertL(int t,struct Node* temp){
+       struct Node* l = start;
+       while(l != NULL){
+           last = l;
+           l = l->address;
+       }
+       temp->info = t;
+       last->address = temp;
+}
 void insert(int t,struct Node* temp){
 	struct Node * np;
 	if (start == NULL){
-		start = temp;
+		start =last= temp;
 		start->info = t;
 	}
 	else
@@ -37,9 +60,11 @@ int main(){
 	while (X == 'Y' || X == 'y'){
 	    cin>>temp;
 		insert(temp, create());
-		
+		cin>>temp;
+		insertL(temp, create());
 		cout << "\nWant to enter a new node if yes then 'y'\n";
 		cin >> X;
 	}
+	insertP(create(), 3, 11);
 	display();
 }
