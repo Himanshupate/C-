@@ -1,0 +1,45 @@
+#include<iostream>
+using namespace std; 
+struct  Node
+{
+	int info = 0;
+	struct Node * address = NULL;	
+}*start;
+struct Node* create(){
+	struct Node* tt = new Node;
+	return tt;
+}
+void insert(int t,struct Node* temp){
+	struct Node * np;
+	if (start == NULL){
+		start = temp;
+		start->info = t;
+	}
+	else
+	{
+		np = start;
+		start = temp;
+		start->address = np;
+	    start->info = t;
+	}
+}
+void display(){
+	struct Node * temp = start;
+	while (temp != NULL){
+		cout << temp->info << "  ";
+		temp = temp->address;
+	}
+}
+int main(){
+	int temp;
+	
+	char X = 'Y';
+	while (X == 'Y' || X == 'y'){
+	    cin>>temp;
+		insert(temp, create());
+		
+		cout << "\nWant to enter a new node if yes then 'y'\n";
+		cin >> X;
+	}
+	display();
+}
