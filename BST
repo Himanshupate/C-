@@ -70,10 +70,11 @@ int main(){
 		cout << "If want to insert new element then type Y:\n";
 		cin >> c;
 	}
+	cout <<"Inorder   : ";
 	inorder(start);
-	cout << endl;
+	cout << endl<<"Preorder  : ";
 	preorder(start);
-	cout << endl;
+	cout << endl<<"Postorder : ";
 	postorder(start);
 	cout << endl;
 	return 0;
