@@ -1,81 +1,63 @@
 #include<iostream>
-#include<stdio.h>
+#include <stdio.h>
 
 using namespace std;
-struct node{
-	int val = 0;
-	struct node *left, *right;
-}*start = NULL;
-struct node* create(int x){
-	struct node *temp = new node;
-	temp->val = x;
-	temp->left = temp->right = NULL;
-	return temp;
+struct Node{
+    int val;
+    struct Node * left = NULL;
+    struct Node *right = NULL;
+}*root = NULL;
+
+struct Node *create(int x){
+    struct Node *tt = new Node;
+    tt-> val = x;
+    return tt;
 }
-
-struct node *search(struct node *temp, int x)
- { 
-	if (temp->val > x ){
-		if (temp->left== NULL ) return temp->left = create(x);
-		else	return search(temp->left, x);
-		
-	}
-	else {
-		if (temp->val <= x){
-			if (temp->right == NULL) return temp->right = create(x);
-			else return search(temp->right, x);
-		}
-		
-	}
-	
- }
-void insert(int x)
- {
-	if (start != NULL){
-		search(start , x);
-	}
-	else start = create(x);
-
-
- }
-
-void inorder(struct node* root){
-	if (root == NULL) return;
-	inorder(root->left);
-	printf("%d ->", root->val);
-	inorder(root->right);
+void bst(struct Node *temp, int x){
+    if(x < temp->val) {
+        if(temp-> left != NULL) return bst(temp->left , x); 
+        else temp->left = create(x);
+    }
+    else {
+        if(temp-> right != NULL) return bst(temp->right , x);
+        else temp->right = create(x);
+    }
 }
-
-void preorder(struct node* root){
-	if (root == NULL) return;
-	printf("%d ->", root->val);
-	preorder(root->left);
-	preorder(root->right);
+void insert(int x){
+    if(root != NULL) bst(root , x);
+    else root  = create(x); 
 }
-
-void postorder(struct node* root) {
-	if (root == NULL) return;
-	postorder(root->left);
-	postorder(root->right);
-	printf("%d ->", root->val);
+void preorder(struct Node *temp){
+    if(temp == NULL) return;
+    cout<<temp->val <<" ";
+    preorder(temp->left);
+    preorder(temp->right);
 }
-
-int main(){
-	char c = 'y';
-	int x;
-	while (c == 'y' || c == 'Y'){
-		cout << "Enter the element to insert in the tree\n";
-		scanf("%d", &x);
-		insert(x);
-		cout << "If want to insert new element then type Y:\n";
-		cin >> c;
-	}
-	cout <<"Inorder   : ";
-	inorder(start);
-	cout << endl<<"Preorder  : ";
-	preorder(start);
-	cout << endl<<"Postorder : ";
-	postorder(start);
-	cout << endl;
-	return 0;
+void postorder(struct Node *temp){
+    if(temp == NULL) return;
+    postorder(temp->left);
+    postorder(temp-> right);
+    cout<<temp->val<<" ";
+}
+void inorder(struct Node *temp){
+    if(temp == NULL) return;
+    inorder(temp->left);
+    cout<<temp->val<<" ";
+    inorder(temp->right);
+}
+int main()
+{
+    int i,n;
+    char c = 'y';
+    while(c == 'Y' || c == 'y'){
+        cout<<"Enter the number: ";
+        cin>>n;
+        insert(n);;
+        cout<<"If you want to add new number then enter Y: ";
+        cin>>c;
+    }
+    cout<<endl;
+    cout<<"Inorder   :  "; inorder(root); cout<<endl;
+    cout<<"Preorder  :  "; preorder(root); cout<<endl;
+    cout<<"Postorder :  "; postorder(root); cout<<endl;
 }
