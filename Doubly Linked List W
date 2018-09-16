@@ -1,0 +1,161 @@
+#include <iostream>
+
+using namespace std;
+struct node{
+    int info;
+    node *next;
+    node *prev;
+}*start,*last;
+
+node * create(){
+    node *temp = new node;
+    return temp;
+}
+
+void insert_beg(int k){
+    node *temp = create();
+    temp->info = k;
+    if(start  == NULL){
+        start =  last = temp;     
+    }
+    else{
+        temp ->next  = start;
+        start->prev = temp;
+        temp->prev = NULL;
+        start = temp;
+    }
+}
+
+
+void deletion(int k){
+    node *temp = start;
+    if(temp->info == k && temp->next == NULL){
+            start = NULL ;
+            return;
+    }
+    else{
+        if(temp->next != NULL){    
+            if(temp->info == k){
+                start = temp->next;
+                temp->next->prev = NULL;
+                delete(temp);
+                return;
+            }
+            while(temp != NULL){
+                if(temp->info == k){
+                    if(temp->next == NULL){
+                        temp->prev->next = NULL;
+                        delete(temp);
+                        return;
+                    }
+                    else{
+                        temp->prev->next= temp->next;
+                        temp->next->prev = temp->prev;
+                        delete(temp);
+                        return;
+                        
+                    }
+                }
+                temp = temp->next;
+            } 
+            cout<<"Element not found in list. Please enter a valid number.\n";
+        }
+    }
+}
+
+
+void insert_b(int j, int k){
+    node *temp = start;
+    node *n = create();
+    n->info = j;
+    int i=1;
+    if(temp == NULL){
+        start = n;
+        return;
+    }
+    if(k == 1 ){
+        n->next = start;
+        start->prev = n;
+        start = n;
+        return;
+    }
+    else{
+        while(temp != NULL){
+            
+            if(i == k){
+                temp->prev->next = n;
+                n->prev = temp->prev;
+                n->next = temp;
+                if(temp->next != NULL){
+                   temp->next->prev = n; 
+                }
+    
+                return;
+            }
+            i++;
+            temp = temp->next;
+        }
+        if(i<=k){
+            cout<<"\nPosition is out of list!\n\n";
+            return;
+        }
+        
+    }
+ 
+}
+
+
+void reverse(){
+    node * temp = start;
+    //node * prev = NULL;
+    node * next = NULL;
+    
+    while(temp != NULL){
+            next = temp->next;
+            temp->next = temp->prev;
+            temp->prev = next;
+            start = temp;
+            temp = next;
+    }
+}
+
+void display(node * temp){
+    while(temp != NULL){
+        cout<<temp->info;
+        temp = temp->next;
+        if(temp != NULL){ cout<<"->"; }
+        else cout<<"\n";
+    }
+}
+int main() {
+	int x,j;
+	char c  ='y';
+	while(c == 'y' || c  ==  'Y'){
+	    cout<<"Enter the elemrnt to be inserted :";
+	    cin>>x;
+	    insert_beg(x);
+        cout<<"\nEnter y if you want to add a new element in the list : ";
+        cin>>c;
+	}
+	cout<<"Insertion Completed !\n";
+	display(start);
+	reverse();
+	display(start);
+
+	cout<<"\nEnter the deleting element :";
+	cin>>x;
+	cout<<"\n";
+	deletion(x);
+	display(start);
+	reverse();
+	display(start);
+	cout<<"\n\n";
+	
+	cout<<"Enter the element to be inserted with the position :\n";
+	cin>>x>>j;
+	cout<<"\n";
+	insert_b(x, j);
+	display(start);
+	reverse();
+	display(start);
+}
