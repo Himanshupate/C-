@@ -1,0 +1,63 @@
+#include <iostream>
+
+using namespace std;
+struct node{
+    int info;
+    node *next;
+}*start;
+
+node * create(){
+    node *temp = new node;
+    return temp;
+}
+
+void insert(int k){
+    node *temp = create();
+    temp->info = k;
+    if(start  == NULL){
+        start =  temp;     
+    }
+    else{
+        temp ->next  = start;
+        start = temp;
+    }
+}
+
+void reverse(node * temp){
+    temp = start;
+    node * prev = NULL;
+    node * next = NULL;
+    
+    while(temp != NULL){
+            next = temp->next;
+            temp->next = prev;
+            prev = temp;
+            temp = next;
+    }
+    start = prev;
+}
+
+void display(){
+    node * temp = start;
+    while(temp != NULL){
+        cout<<temp->info;
+        temp = temp->next;
+        if(temp != NULL){ cout<<"->"; }
+    }
+}
+int main() {
+	int x,j;
+	char c  ='y';
+	while(c == 'y' || c  ==  'Y'){
+	    cout<<"Enter the elemrnt to be inserted :";
+	    cin>>x;
+	    insert(x);
+        cout<<"\nEnter y if you want to add a new element in the list : ";
+        cin>>c;
+	}
+	cout<<"Insertion Completed !\n";
+	display();
+	reverse(start);
+	cout<<"\nReversed list : ";
+	display();
+}
