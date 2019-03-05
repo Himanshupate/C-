@@ -26,6 +26,10 @@ int main() {
                         ss.pop();        
                   }
                     break;
+        case ']': if(ss.top()=='['){
+                        ss.pop();        
+                  } 
+                    break;
         default : ss.push(s[i]); 
      }
      
